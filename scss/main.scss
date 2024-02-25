@@ -45,3 +45,28 @@ p{
 .text-justify{
     text-align: justify;
 }
+
+.image-card{
+    position: relative;
+
+    &:hover{
+        .titre-image{
+         opacity: 1;
+        }
+        img{
+            filter: brightness(0.3);
+        }
+    }
+    img{
+        transition:all 0,3s;
+
+    }
+    .titre-image{
+        top: 50%;
+        left:50%;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        opacity: 0;
+        transition:all 0,3s;
+    }
+}
