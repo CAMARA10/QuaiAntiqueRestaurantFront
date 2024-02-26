@@ -6,7 +6,7 @@ html{
     min-height: 100%;
 }
 main{
-    margin-bottom: 300px;
+    margin-bottom: 270px;
 }
 footer.footer {
     padding : 15px;
@@ -51,7 +51,8 @@ p{
     position: relative;
 
     &:hover{
-        .titre-image{
+        .titre-image,
+        .action-image-buttons{
          opacity: 1;
         }
         img{
@@ -70,7 +71,25 @@ p{
         opacity: 0;
         transition:all 0,3s;
     }
+    .action-image-buttons{
+        position: absolute;
+        top:0;
+        left: 0;
+        width: 100%;
+        padding: 5px;
+        display: flex;
+        justify-content: space-between;
+        opacity: 0;
+        transition:all 0,3s;
+    }
 }
 .form-label{
     color : $primary;
+}
+.allReservations{
+    a{
+        display: block;
+        color: $black;
+        padding: 10px;
+    }
 }
