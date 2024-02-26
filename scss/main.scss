@@ -19,6 +19,7 @@ p{
     font-size: 18px;
 }
 .scene-hero{
+    margin-bottom: 15px;
     position: relative;
     &::before {
         content: "";
@@ -69,4 +70,7 @@ p{
         opacity: 0;
         transition:all 0,3s;
     }
+}
+.form-label{
+    color : $primary;
 }
