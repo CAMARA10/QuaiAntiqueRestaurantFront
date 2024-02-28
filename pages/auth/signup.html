@@ -7,26 +7,44 @@
     <form>
         <div class="mb-3">
             <label for="NomInput" class="form-label">Nom</label>
-            <input type="Nom" class="form-control" id="NomInput" placeholder="votre nom" >
+            <input type="Nom" class="form-control" id="NomInput" placeholder="votre nom">
+            <div class="invalid-feedback">
+              Le nom est requis
+            </div>
           </div>
           <div class="mb-3">
             <label for="PrenomInput" class="form-label">Prénom</label>
-            <input type="Prénom" class="form-control" id="PrenomInput" placeholder="votre prénom" >
+            <input type="Prénom" class="form-control" id="PrenomInput" placeholder="votre prénom">
+            <div class="invalid-feedback">
+              Le prénom est requis
+            </div>
           </div>
         <div class="mb-3">
           <label for="EmailInput" class="form-label">Email</label>
           <input type="email" class="form-control" id="EmailInput" placeholder="test@mail.fr" >
+          <div class="invalid-feedback">
+            L'email n'est pas au bon format.
+          </div>
         </div>
         <div class="mb-3">
           <label for="PasswordInput" class="form-label">Mot de passe</label>
           <input type="password" class="form-control" id="PasswordInput">
+          <div class="invalid-feedback">
+            Le mot de passe n'est pas assez robuste : Au moins 8 caractères, comprenant 1 lettre majuscule, 1 minuscule, 1 chiffre et 1 caractère spécial.
+          </div>
+          <div class="valid-feedback">
+            Le mot de passe est robuste !
+          </div>
         </div>
         <div class="mb-3">
-            <label for="ValidatePasswordInput" class="form-label">Validez votre mot de passe</label>
+            <label for="ValidatePasswordInput" class="form-label">Confirmez votre mot de passe</label>
             <input type="password" class="form-control" id="ValidatePasswordInput">
-          </div>
+            <div class="invalid-feedback">
+              La confirmation n'est pas identique au mot de passe.
+            </div>
+        </div>
         <div class="text-center p-3">
-            <button type="submit" class="btn btn-primary">Connexion</button>
+            <button type="submit" class="btn btn-primary" id="btn-validation-inscription">Inscription</button>
         </div>  
     </form>
     <div class="text-center">
