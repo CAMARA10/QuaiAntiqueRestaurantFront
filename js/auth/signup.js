@@ -13,6 +13,7 @@ inputPrenom.addEventListener(('keyup'), validateForm);
 inputMail.addEventListener(('keyup'), validateForm);
 inputPassword.addEventListener(('keyup'), validateForm);
 inputValidatePassword.addEventListener(('keyup'), validateForm);
+btnValidation.addEventListener("click", inscriptionUtilisateur);
 
 //function de validation du formulaire
 function validateForm(){
@@ -27,6 +28,7 @@ function validateForm(){
     }
     else {
         btnValidation.disabled = true;
+        inscriptionUtilisateur();
     }
 }
 
@@ -86,4 +88,28 @@ function validateRequire(input){
         input.classList.add('is-invalid');
         return false;
     }
+}
+
+function inscriptionUtilisateur(){
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const raw = JSON.stringify({
+        "firstName": "Tmamdou",
+        "lastName": "tcamara",
+        "email": "testmamadou@email.com",
+        "password": "Soleil123."
+});
+
+    const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow"
+};
+
+    fetch("http://127.0.0.1:8000/api/registration", requestOptions)
+    .then((response) => response.text())
+    .then((result) => console.log(result))
+    .catch((error) => console.error(error));
 }
