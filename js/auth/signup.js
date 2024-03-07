@@ -6,13 +6,15 @@ const inputMail=document.getElementById("EmailInput");
 const inputPassword=document.getElementById("PasswordInput");
 const inputValidatePassword=document.getElementById("ValidatePasswordInput");
 const btnValidation=document.getElementById("btn-validation-inscription");
+const formInscription = document.getElementById("formulaireInscription");
 
 //l'ecouteur de mon clavier
-inputNom.addEventListener(('keyup'), validateForm);
-inputPrenom.addEventListener(('keyup'), validateForm);
-inputMail.addEventListener(('keyup'), validateForm);
-inputPassword.addEventListener(('keyup'), validateForm);
-inputValidatePassword.addEventListener(('keyup'), validateForm);
+inputNom.addEventListener("keyup", validateForm);
+inputPrenom.addEventListener("keyup", validateForm);
+inputMail.addEventListener("keyup", validateForm);
+inputPassword.addEventListener("keyup", validateForm);
+inputValidatePassword.addEventListener("keyup", validateForm);
+
 btnValidation.addEventListener("click", inscriptionUtilisateur);
 
 //function de validation du formulaire
@@ -28,7 +30,6 @@ function validateForm(){
     }
     else {
         btnValidation.disabled = true;
-        inscriptionUtilisateur();
     }
 }
 
@@ -91,25 +92,37 @@ function validateRequire(input){
 }
 
 function inscriptionUtilisateur(){
-    const myHeaders = new Headers();
+
+    let dataForm = new FormData(formInscription);
+   
+    let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
-    const raw = JSON.stringify({
-        "firstName": "Tmamdou",
-        "lastName": "tcamara",
-        "email": "testmamadou@email.com",
-        "password": "Soleil123."
-});
+    let raw = JSON.stringify({
+        "firstName": dataForm.get("nom"),
+        "lastName": dataForm.get("prenom"),
+        "email": dataForm.get("email"),
+        "password": dataForm.get("mdp")
+    });
 
-    const requestOptions = {
+    let requestOptions = {
         method: "POST",
         headers: myHeaders,
         body: raw,
         redirect: "follow"
 };
 
-    fetch("http://127.0.0.1:8000/api/registration", requestOptions)
-    .then((response) => response.text())
-    .then((result) => console.log(result))
+    fetch(apiUrl+"registration", requestOptions)
+    .then((response) => {
+        if(response.ok){
+            return response.json();
+        }else{
+            alert("Erreur lors de l'inscription");
+        }
+    })
+    .then((result) => {
+      document.location.href="/signin";
+      alert("Bravo "+ dataForm.get("prenom")+" Vous êtes bien inscrit maintenant")
+    })
     .catch((error) => console.error(error));
 }

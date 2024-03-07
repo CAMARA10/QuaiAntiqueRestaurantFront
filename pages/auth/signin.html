@@ -4,17 +4,17 @@
     </div>
 </div>
 <div class="container">
-    <form>
+    <form id="signinForm">
         <div class="mb-3">
           <label for="EmailInput" class="form-label">Email</label>
-          <input type="email" class="form-control" id="EmailInput" placeholder="test@mail.fr">
+          <input type="email" class="form-control" id="EmailInput" placeholder="test@mail.fr" name="email">
+          <div class="invalid-feedback">
+            Votre e-mail ou mot de passe est incorrect <i class="bi bi-exclamation-circle-fill" style="color:red"></i>
+          </div>
         </div>
         <div class="mb-3">
           <label for="PasswordInput" class="form-label">Mot de passe</label>
-          <input type="password" class="form-control" id="PasswordInput">
-          <div class="invalid-feedback">
-            Votre email ou mot de passe incorrect 
-          </div>
+          <input type="password" class="form-control" id="PasswordInput" name="mdp">
         </div>
         <div class="text-center p-3">
             <button type="button" class="btn btn-primary" id="btnSignin">Connexion</button>
